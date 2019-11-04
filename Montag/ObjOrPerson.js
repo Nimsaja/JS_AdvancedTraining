@@ -39,9 +39,14 @@ class Cat {
         this.age = age;
     }
 
-    makeSound = function () {
+    // Methode
+    makeSound() {
         console.log("Miau ", this.firstName+", "+this.age);
     }
+}
+
+const greetES6 = (name) => {
+    console.log(name + " miaut");
 }
 
 let cat1 = new Cat("Miez", 2);
@@ -51,3 +56,5 @@ cat2.makeSound();
 
 console.log(cat1);
 console.log(cat2);
+
+greetES6(cat1.firstName);
