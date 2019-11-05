@@ -64,24 +64,27 @@ for (let i = 0; i < arr.length; i++) {
 // Field is created now add some magic
 function changeField() {
     let newArray = [];
-    newArray.push(arr[0]);
 
-    for (let i = 1; i < arr.length - 1; i++) {
+    for (let i = 0; i < arr.length; i++) {
         // get DOM Element
         const currentDiv = document.querySelector("#Cell"+i);
 
-        let cellLeft = arr[i-1];
-        let cellRight = arr[i+1];
-        let newColorCell =  new Cell(cellLeft.red, cellRight.green, cellLeft.blue, 1);
-        let color = newColorCell.getColorString();
+        if (i > 30) {
+            let cellTop = arr[i-30];
+            let color = cellTop.getColorString();
 
-        currentDiv.style.backgroundColor = color;
-
-        newArray.push(newColorCell);
+            currentDiv.style.backgroundColor = color;
+            
+            newArray.push(cellTop);
+        } else {
+            newArray.push(arr[i]);
+        }
     }
-
-    newArray.push(arr[arr.length-1]);
 
     arr = newArray;
 }
 
+// main
+for (let i = 0; i < 10; i++) {
+    setInterval(function(){ changeField(); }, 3000);
+}
