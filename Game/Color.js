@@ -70,7 +70,7 @@ function changeField() {
         const currentDiv = document.querySelector("#Cell"+i);
 
         if (i > size-1) {
-            let cellTop = arr[i-size];
+            let cellTop = arr[i-size+1];
             let color = cellTop.getColorString();
 
             currentDiv.style.backgroundColor = color;
