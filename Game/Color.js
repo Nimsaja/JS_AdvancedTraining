@@ -61,7 +61,7 @@ for (let i = 0; i < arr.length; i++) {
     addElement(arr[i], i);
 }
 
-// Field is created now add some magic
+// Field is created, now add some magic
 function changeField() {
     let newArray = [];
 
@@ -69,7 +69,7 @@ function changeField() {
         // get DOM Element
         const currentDiv = document.querySelector("#Cell"+i);
 
-        if (i > size) {
+        if (i > size-1) {
             let cellTop = arr[i-size];
             let color = cellTop.getColorString();
 

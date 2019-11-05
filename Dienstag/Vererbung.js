@@ -29,8 +29,8 @@ class MyCell extends Cell {
     }
 
     toString() {
-        console.log("My Color is " + this.red + "," + this.green + "," + this.blue + "," + this.alfa);
-        console.log("My Size is " + this.size);
+        super.toString();
+        console.log("and my Size is " + this.size);
     }
 
     calcArea() {
