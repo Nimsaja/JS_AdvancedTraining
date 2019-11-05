@@ -1,7 +1,7 @@
 .cell {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     float: left;
-    border: 0.3px solid black;
+    border: 1px solid black;
     margin: 0;
   }
