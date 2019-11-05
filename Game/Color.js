@@ -85,6 +85,14 @@ function changeField() {
 }
 
 // main
-for (let i = 0; i < 10; i++) {
-    setInterval(function(){ changeField(); }, 1000);
-}
+(function (){
+    let timesRun = 0;
+    const interval = setInterval(function(){
+        timesRun += 1;
+        if(timesRun === size){
+            clearInterval(interval);
+        }
+        changeField();
+    }, 1000); 
+})();
+
