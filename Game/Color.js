@@ -34,7 +34,7 @@ for (let i = 0; i < (size*size); i++) {
 
 function addElement (c, i) { 
     // create a new div element 
-    var newDiv = document.createElement("span"); 
+    var newDiv = document.createElement("span");
     newDiv.id = "Cell"+i;
     newDiv.style.backgroundColor = c.getColorString();
     // and give it some content 
@@ -67,6 +67,7 @@ function changeField() {
 
     r = Math.floor(Math.random() * 3) - 1; 
 
+    //TODO forEach verwenden?? map um neues Array zu erstellen?
     for (let i = 0; i < arr.length; i++) {
         // get DOM Element
         const currentDiv = document.querySelector("#cell"+i);
@@ -86,15 +87,19 @@ function changeField() {
     arr = newArray;
 }
 
-// main
-(function (){
+let interval;
+function run() {
     let timesRun = 0;
-    const interval = setInterval(function(){
-        timesRun += 1;
-        if(timesRun === 100){
-            clearInterval(interval);
-        }
+    interval = setInterval(function(){
         changeField();
     }, 1000); 
-})();
+};
+
+function stop() {
+    clearInterval(interval);
+}
+
+function step() {
+    changeField();
+}
 
