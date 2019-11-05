@@ -20,17 +20,17 @@ class Cell {
     }
 }
 
+const size = 30;
+
 // create random Array
 let arr = [];
-for (let i = 0; i < 900; i++) {
+for (let i = 0; i < (size*size); i++) {
     r1 = Math.floor(Math.random() * 256) - 1;
     r2 = Math.floor(Math.random() * 256) - 1;
     r3 = Math.floor(Math.random() * 256) - 1;
     c = new Cell(r1, r2, r3, 1);
     arr.push(c);
 }
-
-// arr.forEach((el) => el.toString());
 
 function addElement (c, i) { 
     // create a new div element 
@@ -55,7 +55,7 @@ function createNewLine() {
 }
 
 for (let i = 0; i < arr.length; i++) {
-    if (i%30 == 0) {
+    if (i%size == 0) {
         createNewLine();
     }
     addElement(arr[i], i);
@@ -69,8 +69,8 @@ function changeField() {
         // get DOM Element
         const currentDiv = document.querySelector("#Cell"+i);
 
-        if (i > 30) {
-            let cellTop = arr[i-30];
+        if (i > size) {
+            let cellTop = arr[i-size];
             let color = cellTop.getColorString();
 
             currentDiv.style.backgroundColor = color;
@@ -86,5 +86,5 @@ function changeField() {
 
 // main
 for (let i = 0; i < 10; i++) {
-    setInterval(function(){ changeField(); }, 3000);
+    setInterval(function(){ changeField(); }, 1000);
 }
