@@ -25,3 +25,15 @@ class Cell {
         document.body.insertBefore(newDiv, currentDiv); 
     }
 }
+
+class BlackCell extends Cell {
+    constructor() {
+        super(0, 0, 0);
+    }
+}
+
+class WhiteCell extends Cell {
+    constructor() {
+        super(255, 255, 255);
+    }
+}
