@@ -6,17 +6,24 @@ class Cell {
         this.alfa = alfa;
     }
 
-    toString() {
-        console.log("My Color is " + this.red + "," + this.green + "," + this.blue + "," + this.alfa);
-    }
-
-    setColor() {
-        let text = 'background-color : rgba(' + this.red + ',' + this.green + ',' + this.blue + ',' + this.alfa + ')';
-        document.querySelector("#"+this.color).setAttribute("style", text);
-    }
-
     getColorString() {
         return 'rgba(' + this.red + ',' + this.green + ',' + this.blue + ',' + this.alfa + ')';
+    }
+
+    addToDOM(index) {
+        // create a new div element 
+        var newDiv = document.createElement("div");
+        newDiv.id = "cell"+index;
+        newDiv.style.backgroundColor = this.getColorString();
+        newDiv.className = "cell";
+        // and give it some content 
+        var newContent = document.createTextNode(""); 
+        // add the text node to the newly created div
+        newDiv.appendChild(newContent);  
+  
+        // add the newly created element and its content into the DOM 
+        const currentDiv = document.querySelector("#cell"+index);
+        document.body.insertBefore(newDiv, currentDiv); 
     }
 }
 
@@ -32,22 +39,6 @@ for (let i = 0; i < (size*size); i++) {
     arr.push(c);
 }
 
-function addElement (c, i) { 
-    // create a new div element 
-    var newDiv = document.createElement("div");
-    newDiv.id = "cell"+i;
-    newDiv.style.backgroundColor = c.getColorString();
-    newDiv.className = "cell";
-    // and give it some content 
-    var newContent = document.createTextNode(""); 
-    // add the text node to the newly created div
-    newDiv.appendChild(newContent);  
-  
-    // add the newly created element and its content into the DOM 
-    const currentDiv = document.querySelector("#cell"+i);
-    document.body.insertBefore(newDiv, currentDiv); 
-}
-
 function createNewLine() {
     let newDiv = document.createElement("div");
     newDiv.style.clear = "left";
@@ -59,7 +50,7 @@ arr.forEach((el, i) => {
     if (i%size == 0) {
         createNewLine();
     }
-    addElement(el, i);
+    el.addToDOM(i);
 });
 
 // Field is created, now add some magic
