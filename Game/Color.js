@@ -54,12 +54,12 @@ function createNewLine() {
     document.body.insertBefore(newDiv, currentDiv);
 }
 
-for (let i = 0; i < arr.length; i++) {
+arr.forEach((el, i) => {
     if (i%size == 0) {
         createNewLine();
     }
-    addElement(arr[i], i);
-}
+    addElement(el, i);
+});
 
 // Field is created, now add some magic
 function changeField() {
@@ -67,7 +67,6 @@ function changeField() {
 
     r = Math.floor(Math.random() * 3) - 1; 
 
-    //TODO forEach verwenden?? map um neues Array zu erstellen?
     for (let i = 0; i < arr.length; i++) {
         // get DOM Element
         const currentDiv = document.querySelector("#cell"+i);
