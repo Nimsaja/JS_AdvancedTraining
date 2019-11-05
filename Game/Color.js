@@ -43,7 +43,7 @@ function addElement (c, i) {
     newDiv.appendChild(newContent);  
   
     // add the newly created element and its content into the DOM 
-    const currentDiv = document.querySelector("#Cell"+i);
+    const currentDiv = document.querySelector("#cell"+i);
     // currentDiv.setAttribute("style", 'background-color : rgba(200, 200, 200, 1)');
     document.body.insertBefore(newDiv, currentDiv); 
 }
@@ -65,12 +65,14 @@ for (let i = 0; i < arr.length; i++) {
 function changeField() {
     let newArray = [];
 
+    r = Math.floor(Math.random() * 3) - 1; 
+
     for (let i = 0; i < arr.length; i++) {
         // get DOM Element
-        const currentDiv = document.querySelector("#Cell"+i);
+        const currentDiv = document.querySelector("#cell"+i);
 
-        if (i > size-1) {
-            let cellTop = arr[i-size+1];
+        if (i > size) {
+            let cellTop = arr[i-size-r];
             let color = cellTop.getColorString();
 
             currentDiv.style.backgroundColor = color;
@@ -89,7 +91,7 @@ function changeField() {
     let timesRun = 0;
     const interval = setInterval(function(){
         timesRun += 1;
-        if(timesRun === size){
+        if(timesRun === 100){
             clearInterval(interval);
         }
         changeField();
