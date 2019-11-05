@@ -1,5 +1,6 @@
 const size = 50;
 let interval;
+let changeFunction = randomFromTop;
 
 // start
 initField(size);
@@ -8,7 +9,7 @@ initField(size);
 function run() {
     let timesRun = 0;
     interval = setInterval(function(){
-        changeField();
+        changeFunction();
     }, 1000); 
 };
 
@@ -17,6 +18,26 @@ function stop() {
 }
 
 function step() {
-    changeField();
+    changeFunction();
+}
+
+function changeAnimation() {
+    const option = document.getElementById("select").value;
+
+    stop();
+    
+    switch(option) {
+        case "randomFromTop":
+          changeFunction = randomFromTop;
+          break;
+        case "linearFromTop":
+          changeFunction = linearFromTop;
+          break;
+        case "increaseDarkCells":
+          changeFunction = increaseDarkCells;
+          break;
+        default:
+          changeFunction = randomFromTop;
+    }
 }
 

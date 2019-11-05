@@ -27,7 +27,7 @@ function initField(size) {
 }
 
 // Field is created, now add some magic
-function changeField() {
+function randomFromTop() {
     let newArray = [];
 
     r = Math.floor(Math.random() * 3) - 1; 
@@ -38,6 +38,28 @@ function changeField() {
 
         if (i > size) {
             let cellTop = arr[i-size-r];
+            let color = cellTop.getColorString();
+
+            currentDiv.style.backgroundColor = color;
+            
+            newArray.push(cellTop);
+        } else {
+            newArray.push(arr[i]);
+        }
+    }
+
+    arr = newArray;
+}
+
+function linearFromTop() {
+    let newArray = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        // get DOM Element
+        const currentDiv = document.querySelector("#cell"+i);
+
+        if (i > size) {
+            let cellTop = arr[i-size];
             let color = cellTop.getColorString();
 
             currentDiv.style.backgroundColor = color;
