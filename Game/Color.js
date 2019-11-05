@@ -20,7 +20,7 @@ class Cell {
     }
 }
 
-const size = 30;
+const size = 50;
 
 // create random Array
 let arr = [];
@@ -34,22 +34,23 @@ for (let i = 0; i < (size*size); i++) {
 
 function addElement (c, i) { 
     // create a new div element 
-    var newDiv = document.createElement("span");
-    newDiv.id = "Cell"+i;
+    var newDiv = document.createElement("div");
+    newDiv.id = "cell"+i;
     newDiv.style.backgroundColor = c.getColorString();
+    newDiv.className = "cell";
     // and give it some content 
-    var newContent = document.createTextNode("[]"); 
+    var newContent = document.createTextNode(""); 
     // add the text node to the newly created div
     newDiv.appendChild(newContent);  
   
     // add the newly created element and its content into the DOM 
     const currentDiv = document.querySelector("#cell"+i);
-    // currentDiv.setAttribute("style", 'background-color : rgba(200, 200, 200, 1)');
     document.body.insertBefore(newDiv, currentDiv); 
 }
 
 function createNewLine() {
     let newDiv = document.createElement("div");
+    newDiv.style.clear = "left";
     const currentDiv = document.querySelector("div1");
     document.body.insertBefore(newDiv, currentDiv);
 }
