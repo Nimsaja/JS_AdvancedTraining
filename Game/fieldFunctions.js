@@ -73,15 +73,31 @@ function linearFromTop() {
     arr = newArray;
 }
 
+let call = 0;
+let saveCellNumbers = [];
+let color;
 function star() {
     let nbIndices = [-size - 1, -size + 1, size - 1, size + 1];
+    if (call === 0) {
+        const r = Math.floor(Math.random() * (arr.length+1)) - 1;
 
-    const r = Math.floor(Math.random() * (arr.length+1)) - 1;
+        // color the neighbour cells like a star
+        color = arr[r].getColorString();
 
-    // color the neighbour cells like a star
-    const color = arr[r].getColorString();
+        saveCellNumbers = nbIndices.map(nb => r + nb);
 
-    nbIndices
-        .map(nb => r + nb)
-        .forEach(el => document.querySelector("#cell"+el).style.backgroundColor = color);
+        saveCellNumbers.forEach(el => document.querySelector("#cell"+el).style.backgroundColor = color);
+
+        call++;
+    } else {
+        for (let i = 0; i < 4; i++) {
+            let sum = saveCellNumbers[i] + nbIndices[i];
+            if (sum >= 0 && sum < (size*size)) {
+                saveCellNumbers[i] = saveCellNumbers[i] + nbIndices[i];
+            }
+        }
+
+        saveCellNumbers.forEach(el => document.querySelector("#cell"+el).style.backgroundColor = color);
+        call++;
+    }
 }
