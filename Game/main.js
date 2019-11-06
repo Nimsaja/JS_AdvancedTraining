@@ -33,8 +33,8 @@ function changeAnimation() {
         case "linearFromTop":
           changeFunction = linearFromTop;
           break;
-        case "increaseDarkCells":
-          changeFunction = increaseDarkCells;
+        case "star":
+          changeFunction = star;
           break;
         default:
           changeFunction = randomFromTop;
