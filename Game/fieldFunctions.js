@@ -74,7 +74,6 @@ function linearFromTop() {
 }
 
 function star() {
-    let newArray = [];
     let nbIndices = [-size - 1, -size + 1, size - 1, size + 1];
 
     const r = Math.floor(Math.random() * (arr.length+1)) - 1;
@@ -82,22 +81,7 @@ function star() {
     // color the neighbour cells like a star
     const color = arr[r].getColorString();
 
-
-    for (let i = 0; i < arr.length; i++) {
-        // get DOM Element
-        const currentDiv = document.querySelector("#cell"+i);
-
-        if (i > size) {
-            let cellTop = arr[i-size];
-            let color = cellTop.getColorString();
-
-            currentDiv.style.backgroundColor = color;
-            
-            newArray.push(cellTop);
-        } else {
-            newArray.push(arr[i]);
-        }
-    }
-
-    arr = newArray;
+    nbIndices
+        .map(nb => r + nb)
+        .forEach(el => document.querySelector("#cell"+el).style.backgroundColor = color);
 }
