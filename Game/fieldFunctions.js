@@ -73,6 +73,12 @@ function linearFromTop() {
     arr = newArray;
 }
 
+function colorCells(cell, color) {
+    const el = document.querySelector("#cell"+cell);
+    el.style.backgroundColor = color;
+    el.innerHTML = "X";
+}
+
 let call = 0;
 let saveCellNumbers = [];
 let color;
@@ -86,9 +92,6 @@ function star() {
 
         saveCellNumbers = nbIndices.map(nb => r + nb);
 
-        saveCellNumbers.forEach(el => document.querySelector("#cell"+el).style.backgroundColor = color);
-
-        call++;
     } else {
         for (let i = 0; i < 4; i++) {
             let sum = saveCellNumbers[i] + nbIndices[i];
@@ -97,7 +100,7 @@ function star() {
             }
         }
 
-        saveCellNumbers.forEach(el => document.querySelector("#cell"+el).style.backgroundColor = color);
-        call++;
     }
+    saveCellNumbers.forEach(el => colorCells(el, color));
+    call++;
 }
